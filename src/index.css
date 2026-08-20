@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6ead2;
+  --cardboard: #8a6a42;
+  --ink: #5d4527;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", "Chalkboard SE", "Marker Felt", "Segoe UI", sans-serif;
+  background: #3a2c1c;
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* Visible keyboard focus for all interactive elements. */
+:focus-visible {
+  outline: 3px solid #2a5694;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ------------------------------------------------------------- buttons */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.6rem;
+  border: 2px solid var(--cardboard);
+  background: #e8d5b0;
+  color: var(--ink);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.12s ease, box-shadow 0.06s ease;
+  box-shadow: 0 3px 0 rgba(90, 60, 30, 0.35);
+  user-select: none;
+}
+
+.btn:hover:not(:disabled) {
+  background: #dcc49a;
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(90, 60, 30, 0.35);
+}
+
+.btn:disabled,
+.btn-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: #5aa84f;
+  border-color: #3c7a33;
+  color: #fff8ea;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #4c9443;
+}
+
+.btn-danger {
+  background: #c0392b;
+  border-color: #7a2418;
+  color: #fff8ea;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #a83226;
+}
+
+.btn-selected {
+  background: #3f7fd4;
+  border-color: #2a5694;
+  color: #fff8ea;
+}
+
+.btn-selected:hover:not(:disabled) {
+  background: #366fb8;
+}
+
+/* ---------------------------------------------------------- tower cards */
+
+.tower-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+  border: 3px solid var(--cardboard);
+  background: #efe0c2;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.12s ease, box-shadow 0.06s ease;
+  box-shadow: 0 4px 0 rgba(90, 60, 30, 0.3);
+}
+
+.tower-card:hover:not(:disabled) {
+  background: #e8d5b0;
+  transform: translateY(-1px);
+}
+
+.tower-card:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 rgba(90, 60, 30, 0.3);
+}
+
+.tower-card-active {
+  background: #d9e8c8;
+  border-color: #3c7a33;
+  box-shadow: 0 4px 0 rgba(60, 122, 51, 0.4);
+}
+
+.tower-card-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Scrollbar styling for the panel. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8d5b0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a86a;
+  border-radius: 5px;
+}
