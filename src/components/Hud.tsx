@@ -5,11 +5,12 @@ interface Props {
   onPause: () => void;
   onSpeed: (s: 1 | 2) => void;
   onAutoStart: () => void;
+  onSound: () => void;
   onStartWave: () => void;
 }
 
-/** Top HUD bar: lives, money, wave info, pause/speed/auto-start controls. */
-export function Hud({ snap, onPause, onSpeed, onAutoStart, onStartWave }: Props) {
+/** Top HUD bar: lives, money, wave info, pause/speed/auto-start/sound controls. */
+export function Hud({ snap, onPause, onSpeed, onAutoStart, onSound, onStartWave }: Props) {
   const waveLabel =
     snap.wave === 0
       ? 'Ready'
@@ -81,6 +82,15 @@ export function Hud({ snap, onPause, onSpeed, onAutoStart, onStartWave }: Props)
           title="Automatically start the next wave after a short countdown"
         >
           Auto-start {snap.autoStart ? 'ON' : 'OFF'}
+        </button>
+
+        <button
+          className={`btn text-sm ${snap.sound ? 'btn-selected' : ''}`}
+          aria-pressed={snap.sound}
+          onClick={onSound}
+          title={snap.sound ? 'Mute sound' : 'Unmute sound'}
+        >
+          {snap.sound ? '🔊 Sound' : '🔇 Muted'}
         </button>
       </div>
     </div>

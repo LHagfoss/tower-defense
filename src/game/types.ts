@@ -172,6 +172,7 @@ export interface GameSnapshot {
   paused: boolean;
   speed: 1 | 2;
   autoStart: boolean;
+  sound: boolean;
   selectedTowerId: number | null;
   placingKind: TowerKind | null;
   bestWave: number;

@@ -20,6 +20,7 @@ export function useGame() {
     e.autoStart = persisted.autoStart;
     e.speed = persisted.speed;
     e.bestWave = persisted.bestWave;
+    e.sound = persisted.sound;
     engineRef.current = e;
   }
   const rendererRef = useRef<Renderer | null>(null);
@@ -37,8 +38,8 @@ export function useGame() {
   // Persist settings when they change.
   useEffect(() => {
     const e = engineRef.current!;
-    savePersisted({ bestWave: e.bestWave, autoStart: e.autoStart, speed: e.speed });
-  }, [snap.autoStart, snap.speed, snap.bestWave]);
+    savePersisted({ bestWave: e.bestWave, autoStart: e.autoStart, speed: e.speed, sound: e.sound });
+  }, [snap.autoStart, snap.speed, snap.bestWave, snap.sound]);
 
   // Main loop.
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,6 +82,7 @@ export function useGame() {
   useEffect(() => {
     const engine = engineRef.current!;
     engine.onEvent = (e) => audio.handle(e);
+    audio.setEnabled(engine.sound);
   }, []);
 
   // ------------------------------------------------------------- actions
@@ -109,6 +111,13 @@ export function useGame() {
   const toggleAutoStart = useCallback(() => {
     const e = engineRef.current!;
     e.autoStart = !e.autoStart;
+    refresh();
+  }, [refresh]);
+
+  const toggleSound = useCallback(() => {
+    const e = engineRef.current!;
+    e.sound = !e.sound;
+    audio.setEnabled(e.sound);
     refresh();
   }, [refresh]);
 
@@ -175,6 +184,7 @@ export function useGame() {
       togglePause,
       setSpeed,
       toggleAutoStart,
+      toggleSound,
       startWave,
       beginPlacing,
       cancelPlacing,

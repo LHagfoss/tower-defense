@@ -87,6 +87,7 @@ export default function App() {
             onPause={actions.togglePause}
             onSpeed={actions.setSpeed}
             onAutoStart={actions.toggleAutoStart}
+            onSound={actions.toggleSound}
             onStartWave={actions.startWave}
           />
 
