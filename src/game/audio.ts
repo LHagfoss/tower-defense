@@ -21,6 +21,15 @@ export class AudioService {
     return this.enabled;
   }
 
+  /**
+   * Call from a user gesture (e.g. first key press) so the AudioContext is
+   * created and resumed while the gesture is still active — browsers block
+   * audio until then. Safe to call repeatedly.
+   */
+  prime() {
+    this.ensureCtx();
+  }
+
   /** Lazily create the AudioContext (browsers require a user gesture first). */
   private ensureCtx(): AudioContext | null {
     if (!this.ctx) {

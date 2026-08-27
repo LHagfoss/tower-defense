@@ -5,6 +5,7 @@ import { Shop } from './components/Shop';
 import { TowerPanel } from './components/TowerPanel';
 import { Overlays } from './components/Overlays';
 import { GameEngine } from './game/engine';
+import { audio } from './game/audio';
 import { BOARD_H, BOARD_W } from './game/config/map';
 
 export default function App() {
@@ -15,6 +16,8 @@ export default function App() {
     const onKey = (e: KeyboardEvent) => {
       const tag = (e.target as HTMLElement)?.tagName;
       if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+      // Unlock the AudioContext inside a user gesture so pops are audible.
+      audio.prime();
       if (e.code === 'Space') {
         // Prevent page scroll; Space toggles game speed.
         e.preventDefault();
