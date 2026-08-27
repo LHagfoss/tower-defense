@@ -6,9 +6,10 @@ export interface PersistedState {
   bestWave: number;
   autoStart: boolean;
   speed: 1 | 2;
+  sound: boolean;
 }
 
-const DEFAULTS: PersistedState = { bestWave: 0, autoStart: true, speed: 2 };
+const DEFAULTS: PersistedState = { bestWave: 0, autoStart: true, speed: 2, sound: true };
 
 export function loadPersisted(): PersistedState {
   try {
@@ -19,6 +20,7 @@ export function loadPersisted(): PersistedState {
       bestWave: typeof parsed.bestWave === 'number' ? parsed.bestWave : 0,
       autoStart: typeof parsed.autoStart === 'boolean' ? parsed.autoStart : true,
       speed: parsed.speed === 1 || parsed.speed === 2 ? parsed.speed : 2,
+      sound: typeof parsed.sound === 'boolean' ? parsed.sound : true,
     };
   } catch {
     return { ...DEFAULTS };

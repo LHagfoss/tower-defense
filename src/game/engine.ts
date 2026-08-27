@@ -55,6 +55,7 @@ export class GameEngine {
   paused = false;
   speed: 1 | 2 = 2;
   autoStart = true;
+  sound = true;
 
   balloons: Balloon[] = [];
   towers: Tower[] = [];
@@ -575,6 +576,7 @@ export class GameEngine {
       paused: this.paused,
       speed: this.speed,
       autoStart: this.autoStart,
+      sound: this.sound,
       selectedTowerId: this.selectedTowerId,
       placingKind: this.placingKind,
       bestWave: this.bestWave,
